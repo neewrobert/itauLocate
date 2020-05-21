@@ -24,7 +24,7 @@ import com.google.maps.model.GeocodingResult;
 import com.google.maps.model.LatLng;
 import com.google.maps.model.PlacesSearchResponse;
 import com.google.maps.model.PlacesSearchResult;
-import com.itau.config.ConfigUtils;
+import com.itau.itauLocate.config.ConfigUtils;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

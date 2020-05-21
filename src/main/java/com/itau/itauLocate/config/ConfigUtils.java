@@ -1,4 +1,4 @@
-package com.itau.config;
+package com.itau.itauLocate.config;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
