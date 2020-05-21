@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
 
 @Entity
 @Table(name = "tb_agency_info")
@@ -24,17 +27,23 @@ public class AgencyModel implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@Expose
 	private String placeId;
-
+	@Expose
 	private String name;
-
+	@Expose
 	private double lat;
-
+	@Expose
 	private double lng;
-
+	@Expose
 	private String formattedAddress;
-
+	@Expose
 	private double rating;
+
+	public String toJson() {
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
+		return gson.toJson(this);
+	}
 
 	public Long getId() {
 		return id;

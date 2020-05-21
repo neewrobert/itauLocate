@@ -53,6 +53,10 @@ public class AgencyController implements Serializable {
 		
 		
 		List<AgencyModel> agencias = dao.getAll();
+		
+		if(agencias == null || agencias.isEmpty()) {
+			return new ResponseEntity<List<AgencyModel>>(agencias, HttpStatus.NO_CONTENT);
+		}
 		return new ResponseEntity<List<AgencyModel>>(agencias, HttpStatus.OK);
 		
 	}
