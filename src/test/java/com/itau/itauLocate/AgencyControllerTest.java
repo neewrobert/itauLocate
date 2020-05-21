@@ -91,5 +91,29 @@ public class AgencyControllerTest extends ItauLocateApplicationTests{
 				.andExpect(MockMvcResultMatchers.status().isOk());
 
 	}
+	
+	/**
+	 * Com o BD populado pelo teste anterior, deve se deletar a agencia anteriormente inserida
+	 * @throws Exception
+	 */
+	@Test
+	public void test5_deletarAgencia() throws Exception {
+
+		this.mockMvc.perform(MockMvcRequestBuilders.delete(REST_SERVICE_URI + "/delete/?id=1"))
+				.andExpect(MockMvcResultMatchers.status().isOk());
+
+	}
+	
+	/**
+	 * Como nao deve haver nenhuma agencia favorita cadastrada, nao deve ser possivel excluir, retornando NO CONTENT
+	 * @throws Exception
+	 */
+	@Test
+	public void test6_deletarAgenciaInexistente() throws Exception {
+
+		this.mockMvc.perform(MockMvcRequestBuilders.delete(REST_SERVICE_URI + "/delete/?id=1"))
+				.andExpect(MockMvcResultMatchers.status().isNoContent());
+
+	}
 
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itau.itauLocate.dao.AgencyDao;
@@ -58,6 +59,21 @@ public class AgencyController implements Serializable {
 			return new ResponseEntity<List<AgencyModel>>(agencias, HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<List<AgencyModel>>(agencias, HttpStatus.OK);
+		
+	}
+	
+	@CrossOrigin
+	@ApiOperation(value = "deleta agencia favorita")
+	@RequestMapping(value = "/delete/", method = RequestMethod.DELETE)
+	public ResponseEntity<String> deletarAgenciaFavorita(@RequestParam Long id){
+		
+		AgencyModel agencia = dao.findById(id);
+		
+		if(agencia == null) {
+			return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
+		}
+		dao.remove(agencia);
+		return new ResponseEntity<String>(HttpStatus.OK);
 		
 	}
 
