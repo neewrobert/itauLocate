@@ -1,6 +1,7 @@
 package com.itau.itauLocate.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -44,5 +45,17 @@ public class AgencyController implements Serializable {
 		return new ResponseEntity<String>(HttpStatus.OK);
 		
 	}
+	
+	@CrossOrigin
+	@ApiOperation(value = "Busca de Favoritos")
+	@RequestMapping(value = "/retriveall/", method = RequestMethod.GET)
+	public ResponseEntity<List<AgencyModel>> buscarAgencias(){
+		
+		
+		List<AgencyModel> agencias = dao.getAll();
+		return new ResponseEntity<List<AgencyModel>>(agencias, HttpStatus.OK);
+		
+	}
+
 
 }
