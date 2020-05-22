@@ -69,7 +69,7 @@ public class LocationControllerTest extends ItauLocateApplicationTests {
 		System.out.println(json);
 		
 		
-		this.mockMvc.perform(MockMvcRequestBuilders.get(REST_SERVICE_URI + "/buscaagencias/").contentType(MediaType.APPLICATION_JSON).content(json))
+		this.mockMvc.perform(MockMvcRequestBuilders.post(REST_SERVICE_URI + "/buscaagencias").contentType(MediaType.APPLICATION_JSON).content(json))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 	}
 
