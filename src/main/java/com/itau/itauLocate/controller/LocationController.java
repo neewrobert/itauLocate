@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -71,8 +72,8 @@ public class LocationController implements Serializable {
 	 */
 	@CrossOrigin
 	@ApiOperation(value = "busca de agencias do itau em um raio de 20km com base em uma geolocalizacao")
-	@RequestMapping(value = "/buscaagencias/", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<List<PlacesSearchResult>> getAgencias(LatLng geocode) throws ApiException, InterruptedException, IOException {
+	@RequestMapping(value = "/buscaagencias", method = RequestMethod.POST, produces = "application/json")
+	public ResponseEntity<List<PlacesSearchResult>> getAgencias(@RequestBody LatLng geocode) throws ApiException, InterruptedException, IOException {
 		System.out.println("BUSCA DE AGENCIAS");
 		GeoApiContext context = new GeoApiContext.Builder().apiKey(apikey).build();
 		
